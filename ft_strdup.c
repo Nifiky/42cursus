@@ -1,44 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 01:08:50 by ncampo            #+#    #+#             */
-/*   Updated: 2024/10/12 15:22:45 by ncampo           ###   ########.fr       */
+/*   Created: 2024/10/12 15clear:25:30 by ncampo            #+#    #+#             */
+/*   Updated: 2024/10/12 15:27:24 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strdup(const char *s)
 {
-	unsigned char	*sp;
-	size_t			i;
+	char	*dup;
+	size_t	len;
+	size_t	i;
 
-	sp = (unsigned char *)s;
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	dup = (char *)malloc((len + 1) * sizeof(char));
+	if (dup == NULL)
+		return (NULL);
 	i = 0;
-	while (i < n)
+	while (i < len)
 	{
-		if ((unsigned char)sp[i] == (unsigned char)c)
-			return ((void *)s + i);
+		dup[i] = s[i];
 		i++;
 	}
+	dup[i] = '\0';
+	return (dup);
+}
+
+/*
+int main (void)
+{
+	char	str[] = "Mira como me duplico";
+	char	*dup_str;
+
+	dup_str = ft_strdup(str);
+	printf("Orignial %s\n", str);
+	printf("El copias: %s\n", dup_str);
 	return (0);
 }
-/*
-int	main(void) {
-	const char str[] = "Hello, World!";
-	char *result;
-
-	result = ft_memchr(str, 'o', sizeof(str));
-
-	if (result) {
-		printf("Found 'o' at position: %ld\n", result - str);
-	} else {
-		printf("'o' not found.\n");
-	}
-
-	return (0);
-}*/
+*/
