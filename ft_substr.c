@@ -1,48 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/12 15:00:00 by 0 by ncampo       #+#    #+#             */
-/*   Updated: 2024/10/12 15:45:15 by ncampo           ###   ########.fr       */
+/*   Created: 2024/10/12 16:29:17 by ncampo            #+#    #+#             */
+/*   Updated: 2024/10/12 16:40:44 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*dup;
-	size_t	len;
+	char	*substr;
 	size_t	i;
+	size_t	str_len;
 
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	dup = (char *)malloc((len + 1) * sizeof(char));
-	if (dup == NULL)
+	if (!s)
+		return (NULL);
+	str_len = ft_strlen(s);
+	if (start >= str_len)
+		return (ft_strdup(""));
+	if (len > str_len - start)
+		len = str_len - start;
+	substr = (char *)malloc ((len + 1) * sizeof(char));
+	if (!substr)
 		return (NULL);
 	i = 0;
-	while (i < len)
+	while (i < len && s[start + i])
 	{
-		dup[i] = s[i];
+		substr[i] = s[start + i];
 		i++;
 	}
-	dup[i] = '\0';
-	return (dup);
+	substr[i] = '\0';
+	return (substr);
 }
-
 /*
-int main (void)
-{
-	char	str[] = "Mira como me duplico";
-	char	*dup_str;
-
-	dup_str = ft_strdup(str);
-	printf("Orignial %s\n", str);
-	printf("El copias: %s\n", dup_str);
-	return (0);
-}
-*/
+int main()*/

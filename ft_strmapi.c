@@ -1,48 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/12 15:00:00 by 0 by ncampo       #+#    #+#             */
-/*   Updated: 2024/10/12 15:45:15 by ncampo           ###   ########.fr       */
+/*   Created: 2024/10/12 16:55:03 by ncampo            #+#    #+#             */
+/*   Updated: 2024/10/12 16:55:31 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*dup;
-	size_t	len;
 	size_t	i;
+	size_t	len;
+	char	*res;
 
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	dup = (char *)malloc((len + 1) * sizeof(char));
-	if (dup == NULL)
-		return (NULL);
 	i = 0;
-	while (i < len)
+	if (!s || !f)
+		return (NULL);
+	len = ft_strlen(s);
+	res = ft_calloc(len + 1, sizeof(char));
+	if (!res)
+		return (NULL);
+	while (s[i])
 	{
-		dup[i] = s[i];
+		res[i] = f(i, s[i]);
 		i++;
 	}
-	dup[i] = '\0';
-	return (dup);
+	res[i] = '\0';
+	return (res);
 }
-
 /*
-int main (void)
-{
-	char	str[] = "Mira como me duplico";
-	char	*dup_str;
-
-	dup_str = ft_strdup(str);
-	printf("Orignial %s\n", str);
-	printf("El copias: %s\n", dup_str);
-	return (0);
-}
-*/
+int main ()*/

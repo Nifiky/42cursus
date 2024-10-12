@@ -1,48 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/12 15:00:00 by 0 by ncampo       #+#    #+#             */
-/*   Updated: 2024/10/12 15:45:15 by ncampo           ###   ########.fr       */
+/*   Created: 2024/10/12 16:37:25 by ncampo            #+#    #+#             */
+/*   Updated: 2024/10/12 16:40:29 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*dup;
-	size_t	len;
+	char	*uni;
+	size_t	len1;
+	size_t	len2;
 	size_t	i;
+	size_t	j;
 
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	dup = (char *)malloc((len + 1) * sizeof(char));
-	if (dup == NULL)
-		return (NULL);
 	i = 0;
-	while (i < len)
-	{
-		dup[i] = s[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
+	j = 0;
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	if (!s1 && !s2)
+		return (NULL);
+	uni = ft_calloc(len1 + len2 + 1, sizeof(char));
+	if (!uni)
+		return (NULL);
+	while (s1[i++])
+		ft_memcpy(uni, s1, len1);
+	while (s2[j++])
+		ft_memcpy(len1 + uni, s2, len2);
+	return (uni);
 }
-
 /*
-int main (void)
-{
-	char	str[] = "Mira como me duplico";
-	char	*dup_str;
-
-	dup_str = ft_strdup(str);
-	printf("Orignial %s\n", str);
-	printf("El copias: %s\n", dup_str);
-	return (0);
-}
+int main ()
 */

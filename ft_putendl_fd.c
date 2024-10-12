@@ -1,48 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/12 15:00:00 by 0 by ncampo       #+#    #+#             */
-/*   Updated: 2024/10/12 15:45:15 by ncampo           ###   ########.fr       */
+/*   Created: 2024/10/12 17:07:05 by ncampo            #+#    #+#             */
+/*   Updated: 2024/10/12 17:08:30 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+void	ft_putendl_fd(char *s, int fd)
 {
-	char	*dup;
-	size_t	len;
-	size_t	i;
+	int	i;
 
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	dup = (char *)malloc((len + 1) * sizeof(char));
-	if (dup == NULL)
-		return (NULL);
 	i = 0;
-	while (i < len)
+	while (s[i])
 	{
-		dup[i] = s[i];
+		write(fd, &s[i], 1);
 		i++;
 	}
-	dup[i] = '\0';
-	return (dup);
+	write(fd, "\n", 1);
 }
-
 /*
-int main (void)
-{
-	char	str[] = "Mira como me duplico";
-	char	*dup_str;
-
-	dup_str = ft_strdup(str);
-	printf("Orignial %s\n", str);
-	printf("El copias: %s\n", dup_str);
-	return (0);
-}
-*/
+int main()*/

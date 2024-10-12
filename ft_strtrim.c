@@ -1,48 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/12 15:00:00 by 0 by ncampo       #+#    #+#             */
-/*   Updated: 2024/10/12 15:45:15 by ncampo           ###   ########.fr       */
+/*   Created: 2024/10/12 16:42:50 by ncampo            #+#    #+#             */
+/*   Updated: 2024/10/12 16:47:21 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*dup;
-	size_t	len;
-	size_t	i;
+	int	i;
+	int	j;
 
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	dup = (char *)malloc((len + 1) * sizeof(char));
-	if (dup == NULL)
+	if (!s1 || !set)
 		return (NULL);
+	j = ft_strlen(s1);
 	i = 0;
-	while (i < len)
-	{
-		dup[i] = s[i];
+	while (ft_strchr(set, s1[i]))
 		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
+	while (ft_strchr(set, s1[j - 1]) && j > i)
+		j--;
+	return (ft_substr(s1, i, j - i));
 }
-
 /*
-int main (void)
+int	main(void)
 {
-	char	str[] = "Mira como me duplico";
-	char	*dup_str;
+	char	s1[] = "              aaaaaaaaaaaaaaaaaaa           ";
+	char	set[] = " ";
 
-	dup_str = ft_strdup(str);
-	printf("Orignial %s\n", str);
-	printf("El copias: %s\n", dup_str);
+	printf("funciona? '%s'\n", ft_strtrim(s1, set));
 	return (0);
 }
 */

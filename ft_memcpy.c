@@ -6,7 +6,7 @@
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 17:02:59 by ncampo            #+#    #+#             */
-/*   Updated: 2024/10/09 16:28:47 by ncampo           ###   ########.fr       */
+/*   Updated: 2024/10/12 15:41:51 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	d = (unsigned char *)dest;
 	s = (const unsigned char *)src;
 	i = 0;
-	if (!dest && !src)
+	if (dest == NULL && src == NULL)
 	{
 		return (NULL);
 	}

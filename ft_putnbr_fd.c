@@ -1,48 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/12 15:00:00 by 0 by ncampo       #+#    #+#             */
-/*   Updated: 2024/10/12 15:45:15 by ncampo           ###   ########.fr       */
+/*   Created: 2024/10/12 17:09:09 by ncampo            #+#    #+#             */
+/*   Updated: 2024/10/12 17:10:15 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+void	ft_putnbr_fd(int nb, int fd)
 {
-	char	*dup;
-	size_t	len;
-	size_t	i;
+	long	ln;
 
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	dup = (char *)malloc((len + 1) * sizeof(char));
-	if (dup == NULL)
-		return (NULL);
-	i = 0;
-	while (i < len)
+	ln = nb;
+	if (ln < 0)
 	{
-		dup[i] = s[i];
-		i++;
+		ft_putchar_fd('-', fd);
+		ln = -ln;
 	}
-	dup[i] = '\0';
-	return (dup);
+	if (ln >= 10)
+		ft_putnbr_fd(ln / 10, fd);
+	ft_putchar_fd((ln % 10) + '0', fd);
 }
-
 /*
+#include 
 int main (void)
 {
-	char	str[] = "Mira como me duplico";
-	char	*dup_str;
+	int	n1 = 12345;
+	int	n2 = -4333848;
+	
+	ft_putnbr_fd(n1, 1);
+    ft_putchar_fd('\n', 1);
 
-	dup_str = ft_strdup(str);
-	printf("Orignial %s\n", str);
-	printf("El copias: %s\n", dup_str);
+    ft_putnbr_fd(n2, 1);
+    ft_putchar_fd('\n', 1);
+
 	return (0);
-}
 */
