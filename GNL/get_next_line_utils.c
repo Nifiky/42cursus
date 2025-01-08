@@ -6,7 +6,7 @@
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 22:38:54 by ncampo            #+#    #+#             */
-/*   Updated: 2025/01/05 23:57:57 by ncampo           ###   ########.fr       */
+/*   Updated: 2025/01/08 01:15:40 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ void	*ft_calloc(size_t elementCount, size_t elementSize)
 
 size_t	ft_strlen(const char *theString)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	while (theString[i])
 		i++;

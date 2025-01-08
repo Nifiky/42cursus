@@ -6,7 +6,7 @@
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 22:39:49 by ncampo            #+#    #+#             */
-/*   Updated: 2025/01/05 23:59:28 by ncampo           ###   ########.fr       */
+/*   Updated: 2025/01/08 01:22:41 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*read_file(int fd, char *res)
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
-	char	*line;
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
@@ -104,6 +104,5 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_line(buffer);
 	buffer = ft_next(buffer);
-	
 	return (line);
 }
