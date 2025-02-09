@@ -6,7 +6,7 @@
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 03:18:21 by ncampo            #+#    #+#             */
-/*   Updated: 2025/01/14 22:14:24 by ncampo           ###   ########.fr       */
+/*   Updated: 2025/02/09 03:12:16 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	append(t_list **list, char *buf)
 
 void	create_list(t_list **list, int fd)
 {
-	int		char_read;	
+	int		char_read;
 	char	*buf;
 
 	while (!found_newline(*list))

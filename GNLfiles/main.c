@@ -1,5 +1,4 @@
 #include "get_next_line.h"
-#include <stdio.h>
 
 int main(void)
 {
@@ -8,7 +7,7 @@ int main(void)
     int lines;
 
     lines = 1;
-    fd = open("test3.txt", O_RDONLY);
+    fd = open("achilles.txt", O_RDONLY);
 
     while ((line = get_next_line(fd)))
     {
