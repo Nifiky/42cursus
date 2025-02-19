@@ -7,7 +7,7 @@ int main(void)
     int lines;
 
     lines = 1;
-    fd = open("achilles.txt", O_RDONLY);
+    fd = open("test2.txt", O_RDONLY);
 
     while ((line = get_next_line(fd)))
     {
