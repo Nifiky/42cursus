@@ -6,7 +6,7 @@
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 03:13:10 by ncampo            #+#    #+#             */
-/*   Updated: 2025/01/18 20:08:09 by ncampo           ###   ########.fr       */
+/*   Updated: 2025/03/05 22:13:03 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_list
 
 int		found_newline(t_list *list);
 t_list	*find_last_node(t_list *list);
-char	*get_line(t_list *list);
+char	*tget_line(t_list *list);
 void	copy_str(t_list *list, char *str);
 int		len_to_newline(t_list *list);
 void	polish_list(t_list **list);

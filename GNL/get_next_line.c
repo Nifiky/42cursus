@@ -6,7 +6,7 @@
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 03:18:21 by ncampo            #+#    #+#             */
-/*   Updated: 2025/01/15 13:05:29 by ncampo           ###   ########.fr       */
+/*   Updated: 2025/03/06 21:04:01 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	polish_list(t_list **list)
 	dealloc(list, clean_node, buf);
 }
 
-char	*get_line(t_list *list)
+char	*tget_line(t_list *list)
 {
 	int		str_len;
 	char	*next_str;
@@ -80,7 +80,7 @@ void	create_list(t_list **list, int fd)
 		if (NULL == buf)
 			return ;
 		char_read = read(fd, buf, BUFFER_SIZE);
-		if (!char_read)
+		if (char_read <= 0)
 		{
 			free(buf);
 			return ;
@@ -95,12 +95,30 @@ char	*get_next_line(int fd)
 	static t_list	*list = NULL;
 	char			*next_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	create_list(&list, fd);
 	if (list == NULL)
 		return (NULL);
-	next_line = get_line(list);
+	next_line = tget_line(list);
 	polish_list(&list);
 	return (next_line);
 }
+/*
+int main(void)
+{
+    int fd;
+    char *line;
+    int lines;
+
+    lines = 1;
+    fd = open("test2.txt", O_RDONLY);
+
+    while ((line = get_next_line(fd)))
+    {
+        printf("Line %d: %s\n", lines, line);
+        free(line);
+        ++lines;
+    }
+    close(fd);
+}*/
