@@ -6,7 +6,7 @@
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 03:18:21 by ncampo            #+#    #+#             */
-/*   Updated: 2025/03/06 21:04:01 by ncampo           ###   ########.fr       */
+/*   Updated: 2025/03/07 02:54:06 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	polish_list(t_list **list)
 	dealloc(list, clean_node, buf);
 }
 
-char	*tget_line(t_list *list)
+char	*get_line(t_list *list)
 {
 	int		str_len;
 	char	*next_str;
@@ -100,7 +100,7 @@ char	*get_next_line(int fd)
 	create_list(&list, fd);
 	if (list == NULL)
 		return (NULL);
-	next_line = tget_line(list);
+	next_line = get_line(list);
 	polish_list(&list);
 	return (next_line);
 }
