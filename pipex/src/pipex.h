@@ -6,13 +6,14 @@
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 22:39:00 by ncampo            #+#    #+#             */
-/*   Updated: 2025/05/05 22:45:48 by ncampo           ###   ########.fr       */
+/*   Updated: 2025/05/05 23:09:34 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
+# include "../libft/libft.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
