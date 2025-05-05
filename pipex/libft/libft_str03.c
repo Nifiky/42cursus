@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   libft_str03.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/16 17:08:30 by ana-lda-          #+#    #+#             */
-/*   Updated: 2025/05/05 01:28:12 by ncampo           ###   ########.fr       */
+/*   Created: 2025/05/05 22:34:42 by ncampo            #+#    #+#             */
+/*   Updated: 2025/05/05 22:34:52 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,40 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	char	*substr;
 	size_t	i;
-	char	*str;
+	size_t	str_len;
 
-	if (start >= (unsigned int)ft_strlen(s))
+	if (!s)
+		return (NULL);
+	str_len = ft_strlen(s);
+	if (start >= str_len)
 		return (ft_strdup(""));
-	if (start + len > (unsigned int)ft_strlen(s))
-		len = ft_strlen(s) - start;
-	str = (char *)malloc(len + 1);
-	if (!str)
+	if (len > str_len - start)
+		len = str_len - start;
+	substr = (char *)malloc ((len + 1) * sizeof(char));
+	if (!substr)
 		return (NULL);
 	i = 0;
-	while (s[start + i] != '\0' && i < len)
+	while (i < len && s[start + i])
 	{
-		str[i] = s[start + i];
+		substr[i] = s[start + i];
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	substr[i] = '\0';
+	return (substr);
 }
-/* #include <stdio.h>
 
-int	main(void)
+int	ft_tolower(int i)
 {
-	printf("%s\n", ft_substr("abc", 1, 4));
-} */
+	if (i >= 'A' && i <= 'Z')
+		return (i + 32);
+	return (i);
+}
+
+int	ft_toupper(int x)
+{
+	if (x >= 'a' && x <= 'z')
+		return (x - 32);
+	return (x);
+}

@@ -5,41 +5,41 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/05 01:39:27 by ncampo            #+#    #+#              #
-#    Updated: 2025/05/05 01:39:31 by ncampo           ###   ########.fr        #
+#    Created: 2025/05/05 22:40:20 by ncampo            #+#    #+#              #
+#    Updated: 2025/05/05 22:51:21 by ncampo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c utils.c error.c pipex.c
-OBJS = $(SRCS:.c=.o)
-CC = cc
-LIBFT = libft
-LIBFTA = libft/libft.a
-RM = rm -f
-CFLAGS = -g -Wall -Werror -Wextra
 NAME = pipex
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
-all:		$(NAME)
+S_DIR = src
+L_DIR = libft
+LIBFT = $(L_DIR)/libft.a
 
-$(NAME):	$(LIBFTA) $(OBJS)	
-			$(CC)  $(CFLAGS) $(OBJS) $(LIBFTA) -o $(NAME)
-			@echo "\033[032mPIPEX COMPILATION SUCCEEDED\033[0m"
-	
-$(LIBFTA): $(LIBFT)
-			make -s -C $(LIBFT)
+SRCS = $(S_DIR)/pipex.c $(S_DIR)/pipex_utils.c
+OBJS = $(SRCS:.c=.o)
+
+all: $(LIBFT) $(NAME)
+
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) -L$(L_DIR) -lft -o $(NAME)
+	echo "\n PIPEX LISTO "
+
+
+$(S_DIR)/%.o: $(S_DIR)/%.c
+	$(CC) $(CFLAGS) -I $(L_DIR) -c $< -o $@
+
+$(LIBFT):
+	make -C $(L_DIR)
 
 clean:
-			$(RM) $(OBJS)
-			make clean -s -C $(LIBFT)
-			@echo "\033[38;5;208mOBJECTS DELETED\033[0m"
+	rm -f $(OBJS)
+	make clean -C $(L_DIR)
 
-fclean:			clean
-			$(RM) $(NAME)
-			make fclean -s -C $(LIBFT)
-			@echo "\033[031mPROGRAM DELETED\033[0m"
+fclean: clean
+	rm -f $(NAME)
+	make fclean -C $(L_DIR)
 
-re:			fclean all
-
-.PHONY:		all clean re fclean
-
-.SILENT:
+re: fclean all
