@@ -5,41 +5,34 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/08 23:48:18 by ncampo            #+#    #+#              #
-#    Updated: 2025/05/08 23:48:21 by ncampo           ###   ########.fr        #
+#    Created: 2025/05/05 02:29:27 by ncampo            #+#    #+#              #
+#    Updated: 2025/05/05 22:43:50 by ncampo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-L_DIR = Libft
-LIBFT = $(L_DIR)/libft.a
+NAME = libft.a
 
-SRCS = push_swap.c algoritmo.c numbers.c parse.c push_swap_utils.c\
-		push.c reverse.c rotate.c sort_five.c sorter.c swap.c
-	
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+
+SRCS = libft_char.c libft_core.c libft_fd.c libft_mem.c\
+	libft_split.c libft_str01.c libft_str02.c libft_str03.c\
+	ft_printf_v1.c ft_printf_v2.c
+
 OBJS = $(SRCS:.c=.o)
 
-all:  $(LIBFT) $(NAME)
+all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) -L$(L_DIR) -lft -o $(NAME)
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) -I$(L_DIR) -c $< -o $@
-
-$(LIBFT):
-	make -C $(L_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
-	make clean -C $(L_DIR)
 
 fclean: clean
 	rm -f $(NAME)
-	make fclean -C $(L_DIR)
 
 re: fclean all
-
-.PHONY: all clean fclean
