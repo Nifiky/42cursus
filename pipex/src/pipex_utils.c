@@ -6,7 +6,7 @@
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 22:39:43 by ncampo            #+#    #+#             */
-/*   Updated: 2025/05/12 03:09:12 by ncampo           ###   ########.fr       */
+/*   Updated: 2025/05/16 12:34:52 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ int	open_file(char *file, int in_out)
 		fd = open(file, O_RDONLY, 0777);
 	else
 		fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	if (fd == -1)
-	{
-		ft_printf("Error: File not Open");
-		exit(1);
-	}
 	return (fd);
 }
 
