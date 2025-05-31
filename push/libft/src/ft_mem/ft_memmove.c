@@ -1,44 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fizzbuzz.c                                         :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/26 14:25:23 by ojamal            #+#    #+#             */
-/*   Updated: 2025/05/19 20:43:39 by ncampo           ###   ########.fr       */
+/*   Created: 2025/05/31 00:03:00 by ncampo            #+#    #+#             */
+/*   Updated: 2025/05/31 00:03:01 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "../../inc/libft.h"
 
-void	mini_putnbr(int n)
+void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	char c;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	if (n > 9)
-		mini_putnbr(n / 10);
-	c = n % 10 + '0'
-	write(1, &c, 1);
-}
-
-int main(void)
-{
-	int 	i;
-
-	i = 1;
-	while (i <= 100)
-	{
-		if (i % 3 == 0 && i % 5 == 0)
-			write(1, "fizzbuzz", 8);
-		else if (i % 3 == 0)
-			write(1, "fizz", 4);
-		else if (i % 5 == 0)
-			write(1, "buzz", 4);
-		else
-			mini_putnbr(i);
-		write(1, "\n", 1);
-		i++;
-	}
-	return (0);
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	if (d == s)
+		return (dst);
+	if (d < s)
+		while (n--)
+			*d++ = *s++;
+	else
+		while (n--)
+			*(d + n) = *(s + n);
+	return (dst);
 }

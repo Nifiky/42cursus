@@ -1,44 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fizzbuzz.c                                         :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/26 14:25:23 by ojamal            #+#    #+#             */
-/*   Updated: 2025/05/19 20:43:39 by ncampo           ###   ########.fr       */
+/*   Created: 2025/05/31 00:01:40 by ncampo            #+#    #+#             */
+/*   Updated: 2025/05/31 00:01:41 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "../../inc/libft.h"
 
-void	mini_putnbr(int n)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	char c;
+	t_list	*last_node;
 
-	if (n > 9)
-		mini_putnbr(n / 10);
-	c = n % 10 + '0'
-	write(1, &c, 1);
-}
-
-int main(void)
-{
-	int 	i;
-
-	i = 1;
-	while (i <= 100)
+	if (!new)
+		return ;
+	if (!*lst)
 	{
-		if (i % 3 == 0 && i % 5 == 0)
-			write(1, "fizzbuzz", 8);
-		else if (i % 3 == 0)
-			write(1, "fizz", 4);
-		else if (i % 5 == 0)
-			write(1, "buzz", 4);
-		else
-			mini_putnbr(i);
-		write(1, "\n", 1);
-		i++;
+		*lst = new;
+		return ;
 	}
-	return (0);
+	last_node = ft_lstlast(*lst);
+	last_node->next = new;
 }

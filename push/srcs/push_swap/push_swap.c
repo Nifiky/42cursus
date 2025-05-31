@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fizzbuzz.c                                         :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/26 14:25:23 by ojamal            #+#    #+#             */
-/*   Updated: 2025/05/19 20:43:39 by ncampo           ###   ########.fr       */
+/*   Created: 2025/05/31 00:31:15 by ncampo            #+#    #+#             */
+/*   Updated: 2025/05/31 00:31:16 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "../../inc/push_swap.h"
 
-void	mini_putnbr(int n)
+int	main(int argc, char **argv)
 {
-	char c;
+	t_stack_node	*a;
+	t_stack_node	*b;
 
-	if (n > 9)
-		mini_putnbr(n / 10);
-	c = n % 10 + '0'
-	write(1, &c, 1);
-}
-
-int main(void)
-{
-	int 	i;
-
-	i = 1;
-	while (i <= 100)
+	a = NULL;
+	b = NULL;
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (1);
+	else if (argc == 2)
+		argv = split(argv[1], ' ');
+	init_stack_a(&a, argv + 1);
+	if (!stack_sorted(a))
 	{
-		if (i % 3 == 0 && i % 5 == 0)
-			write(1, "fizzbuzz", 8);
-		else if (i % 3 == 0)
-			write(1, "fizz", 4);
-		else if (i % 5 == 0)
-			write(1, "buzz", 4);
+		if (stack_len(a) == 2)
+			sa(&a, false);
+		else if (stack_len(a) == 3)
+			sort_three(&a);
 		else
-			mini_putnbr(i);
-		write(1, "\n", 1);
-		i++;
+			sort_stacks(&a, &b);
 	}
-	return (0);
+	free_stack(&a);
 }

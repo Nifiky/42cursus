@@ -1,44 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fizzbuzz.c                                         :+:      :+:    :+:   */
+/*   ft_handle_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/26 14:25:23 by ojamal            #+#    #+#             */
-/*   Updated: 2025/05/19 20:43:39 by ncampo           ###   ########.fr       */
+/*   Created: 2025/05/31 00:03:23 by ncampo            #+#    #+#             */
+/*   Updated: 2025/05/31 00:03:23 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "../../inc/ft_printf.h"
 
-void	mini_putnbr(int n)
+int	ft_handle_int(va_list ap)
 {
-	char c;
+	long long	n;
+	int			neg;
 
-	if (n > 9)
-		mini_putnbr(n / 10);
-	c = n % 10 + '0'
-	write(1, &c, 1);
-}
-
-int main(void)
-{
-	int 	i;
-
-	i = 1;
-	while (i <= 100)
+	n = va_arg(ap, int);
+	neg = 0;
+	if (n < 0)
 	{
-		if (i % 3 == 0 && i % 5 == 0)
-			write(1, "fizzbuzz", 8);
-		else if (i % 3 == 0)
-			write(1, "fizz", 4);
-		else if (i % 5 == 0)
-			write(1, "buzz", 4);
-		else
-			mini_putnbr(i);
-		write(1, "\n", 1);
-		i++;
+		n *= -1;
+		neg++;
+		write(1, "-", 1);
 	}
-	return (0);
+	return (ft_putnbr_base(n, "0123456789") + neg);
 }

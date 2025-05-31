@@ -1,44 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fizzbuzz.c                                         :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/26 14:25:23 by ojamal            #+#    #+#             */
-/*   Updated: 2025/05/19 20:43:39 by ncampo           ###   ########.fr       */
+/*   Created: 2025/05/30 23:45:57 by ncampo            #+#    #+#             */
+/*   Updated: 2025/05/30 23:46:00 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void	mini_putnbr(int n)
-{
-	char c;
+# include <stdlib.h>
+# include <unistd.h>
 
-	if (n > 9)
-		mini_putnbr(n / 10);
-	c = n % 10 + '0'
-	write(1, &c, 1);
-}
+# define MAX_FD 1024
 
-int main(void)
-{
-	int 	i;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
-	i = 1;
-	while (i <= 100)
-	{
-		if (i % 3 == 0 && i % 5 == 0)
-			write(1, "fizzbuzz", 8);
-		else if (i % 3 == 0)
-			write(1, "fizz", 4);
-		else if (i % 5 == 0)
-			write(1, "buzz", 4);
-		else
-			mini_putnbr(i);
-		write(1, "\n", 1);
-		i++;
-	}
-	return (0);
-}
+char	*process_line(char **stash);
+char	*read_from_fd(int fd);
+char	*get_next_line_helper(char **stash, int fd);
+char	*get_next_line_bonus(int fd); 
+
+#endif
