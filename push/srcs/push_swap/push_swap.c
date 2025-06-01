@@ -6,7 +6,7 @@
 /*   By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 00:31:15 by ncampo            #+#    #+#             */
-/*   Updated: 2025/05/31 00:31:16 by ncampo           ###   ########.fr       */
+/*   Updated: 2025/06/01 01:31:19 by ncampo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,11 @@ int	main(int argc, char **argv)
 	}
 	free_stack(&a);
 }
+
+/*
+- Randomized numbers
+ARG="$(shuf -i 0-1000 -n 100 | tr '\n' ' ')"
+
+- Show number of movements
+wc -l < /tmp/ps_out
+*/
