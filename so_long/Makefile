@@ -6,7 +6,7 @@
 #    By: ncampo <ncampo@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/06 18:44:29 by ncampo            #+#    #+#              #
-#    Updated: 2025/06/06 21:41:50 by ncampo           ###   ########.fr        #
+#    Updated: 2025/06/11 20:32:31 by ncampo           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ fclean:		clean
 			@make -s clean -C $(MLX_DIR)
 			@rm -rf $(NAME)
 			@echo "binary file removed."
-
+			
 re:			fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re normi
