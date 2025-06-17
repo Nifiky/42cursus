@@ -12,18 +12,14 @@
 
 #include <unistd.h>
 
-void	ft_putnbr(int nbr)
+void        mini_putnbr(int n)
 {
-	if (nbr <= 9)
-	{
-		nbr = nbr % 10 + '0';
-		write(1, &nbr, 1);
-	}
-	else
-	{
-		ft_putnbr(nbr / 10);
-		ft_putnbr(nbr % 10);
-	}
+        char c;
+
+        if (n > 9)
+                mini_putnbr(n / 10);
+        c = n % 10 + '0';
+        write(1, &c, 1);
 }
 
 int main(int ac, char **av)
