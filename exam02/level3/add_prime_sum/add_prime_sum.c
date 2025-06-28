@@ -14,27 +14,27 @@
 
 int mini_atoi(char *str)
 {
-	int i = -1;
-	int res = 0;
-	while(str[++i])
-		res = res * 10 + str[i] - '0';
-	return res;
+    int i = -1;
+    int res = 0;
+    while(str[++i])
+        res = res * 10 + str[i] - '0';
+    return res;
 }
 
 int f_prime(int n)
 {
-	int i = 3;
-	if(n <= 1)
-		return 0;
-	if (n % 2 == 0 && n > 2)
-		return 0;
-	while (i < (n / 2))
-	{
-		if (n % i == 0)
-			return 0;
-		i += 2;
-	}
-	return 1;
+    int i = 3;
+    if(n <= 1)
+        return 0;
+    if (n % 2 == 0 && n > 2)
+        return 0;
+    while (i < (n / 2))
+    {
+        if (n % i == 0)
+            return 0;
+        i += 2;
+    }
+    return 1;
 }
 
 void mini_putnbr(int n)
@@ -48,19 +48,19 @@ void mini_putnbr(int n)
 
 int main(int ac, char **av)
 {
-        if (ac == 1)
-                mini_putnbr(0);
-        if (ac == 2)
-        {
-                int i = 0;
-                int a = mini_atoi(av[1]);
+    if (ac == 1)
+        mini_putnbr(0);
+    if (ac == 2)
+    {
+        int i = 0;
+        int a = mini_atoi(av[1]);
         while(a > 0)
         {
             if(f_prime(a))
-            i += a;
+                i += a;
             a--;
         }
-                mini_putnbr(i);
-        }
-        write(1, "\n", 1);
- }
+        mini_putnbr(i);
+    }
+    write(1, "\n", 1);
+}
