@@ -39,16 +39,11 @@ int f_prime(int n)
 
 void mini_putnbr(int n)
 {
-	if (n <= 9)
-	{
-		n = n + '0';
-		write(1, &n, 1);
-	}
-	else
-	{
-		mini_putnbr(n / 10);
-		mini_putnbr(n % 10);
-	}
+ char c;
+ if(n > 9)
+    mini_putnbr(n / 10);
+ c = n % 10 + '0';
+ write(1, &c, 1);
 }
 
 int main(int ac, char **av)
