@@ -39,28 +39,28 @@ int f_prime(int n)
 
 void mini_putnbr(int n)
 {
- char c;
- if(n > 9)
-    mini_putnbr(n / 10);
- c = n % 10 + '0';
- write(1, &c, 1);
+    char c;
+    if(n > 9)
+        mini_putnbr(n / 10);
+    c = n % 10 + '0';
+    write(1, &c, 1);
 }
 
 int main(int ac, char **av)
 {
-	if (ac == 1)
-		mini_putnbr(0);
-	if (ac == 2)
-	{
-		int i = 0;
-		int a = mini_atoi(av[1]);
- while(a > 0)
-	{
-  if(f_prime(a))
-     i += a;
-  a--;
+        if (ac == 1)
+                mini_putnbr(0);
+        if (ac == 2)
+        {
+                int i = 0;
+                int a = mini_atoi(av[1]);
+        while(a > 0)
+        {
+            if(f_prime(a))
+            i += a;
+            a--;
+        }
+                mini_putnbr(i);
+        }
+        write(1, "\n", 1);
  }
-		mini_putnbr(i);
-	}
-	write(1, "\n", 1);
-}
