@@ -52,11 +52,14 @@ int main(int ac, char **av)
 		mini_putnbr(0);
 	if (ac == 2)
 	{
-		int i;
+		int i = 0;
 		int a = mini_atoi(av[1]);
 		while(a > 0)
-			if (f_prime(a--))
-				i += a + 1;
+			{
+     if(f_prime(a))
+       i += a;
+     a--;
+   }
 		mini_putnbr(i);
 	}
 	write(1, "\n", 1);
