@@ -54,12 +54,12 @@ int main(int ac, char **av)
 	{
 		int i = 0;
 		int a = mini_atoi(av[1]);
-		while(a > 0)
-			{
-     if(f_prime(a))
-       i += a;
-     a--;
-   }
+ while(a > 0)
+	{
+  if(f_prime(a))
+     i += a;
+  a--;
+ }
 		mini_putnbr(i);
 	}
 	write(1, "\n", 1);
