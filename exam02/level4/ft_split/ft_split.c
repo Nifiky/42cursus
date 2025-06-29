@@ -32,7 +32,7 @@ char    **ft_split(char *str)
 	char **split;
 	if(!str)
 	{
-		split = (char **)malloc(sizeof(char *));
+		split = malloc(sizeof(char *));
 		split[0] = NULL;
 		return (split);
 	}
@@ -45,7 +45,7 @@ char    **ft_split(char *str)
 		while(str[i] && str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
 			i++;
 	}
-	split = (char **)malloc((j + 1) * sizeof(char *));
+	split = malloc((j + 1) * sizeof(*split));
 	i = 0;
 	j = 0;
 	while (str[i])
@@ -57,7 +57,7 @@ char    **ft_split(char *str)
 			i++;
 		if (i > j)
 		{
-			split[len] = (char *)malloc(sizeof(char *) * ((i - j) + 1));
+			split[len] = malloc(i - j + 1);
 			ft_strncpy(split[len++], &str[j], i - j);
 		}
 	}
