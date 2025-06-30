@@ -80,9 +80,7 @@ void	ft_putstr(char *str)
 int main(int ac, char **av)
 {
 	int i = 1;
-	if (ac > 2 && *av[1])
-		ft_putstr(av[1]);
-	if (ac == 2 && *av[1])
+	if (ac == 2)
 	{
 		char **splited = ft_split(av[1]);
 		if(!splited[0])
