@@ -20,7 +20,7 @@ int	*ft_range(int start, int end)
 		len = end - start + 1;
 	else
 		len = start - end + 1;
-	int *tab = (int *)malloc(sizeof(int *) * len);
+	int *tab = malloc(len * sizeof(*tab));
 	if (start <= end)
 		while(++i < len)
 			tab[i] = start + i;
