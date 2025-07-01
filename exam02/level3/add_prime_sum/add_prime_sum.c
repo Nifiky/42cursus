@@ -35,16 +35,14 @@ int mini_atoi(char *str)
 
 int f_prime(int n)
 {
-    int i = 3;
-    if(n <= 1)
+    int i = 2;
+    if(n < 2)
         return 0;
-    if (n % 2 == 0 && n > 2)
-        return 0;
-    while (i < (n / 2))
+    while (i * i <= n)
     {
         if (n % i == 0)
             return 0;
-        i += 2;
+        i++;
     }
     return 1;
 }
